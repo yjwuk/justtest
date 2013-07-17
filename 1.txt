@@ -1,0 +1,38 @@
+方法一：QTP最小化
+Set qtApp = getObject("","QuickTest.Application")
+ qtApp.WindowState = "Minimized"
+' 在测试脚本的尾部恢复QTP窗口
+ qtApp.WindowState = "Maximized"
+ Set qtApp = Nothing
+
+
+方法二：键盘输入的方法(webedit要是enable状态)
+Browser("@@").Page("@@").WebEdit("@@") .Object.Focus 
+'使WebEdit获得焦点
+ Set wsh=CreateObject("Wscript.shell")
+ wsh.sendKeys"h"
+
+2、使用QTP的隐藏对象Mercury.DeviceReplay
+Browser("Salesforce.com - 客户安全登录页面").Page("Salesforce.com - 客户安全登录页面").WebEdit("username").object.focus
+Set dev=createobject("Mercury.DeviceReplay")
+dev.SendString( "issqa@mjn.com.sandbox2")
+
+方法三：使用正则表达式也没法解决的问题时 使用描述性编程
+Set desc = description.Create()
+desc("text").value="2019年普通配方专业样品管理"
+desc("class").value=""
+
+Browser("Salesforce.com").Page("专业样品管理 ~ Salesforce.com").Link(desc).Click
+
+方法四：使用鼠标点击
+Set objimg=Browser("Salesforce.com").Page("Salesforce.com - Enterprise").WebTable("城市名称")
+Set imgobjlink=objimg.ChildItem(index,8,"Image",0)
+setting.webpackage("ReplayType") = 2
+imgobjlink.FireEvent "onclick",,,micLeftBtn
+Browser("Salesforce.com").Page("Salesforce.com - Enterprise").Image("城市经理 查找（新窗口）").FireEvent "onclick",,,micLeftBtn
+
+四：计时（MercuryTimes:计时保留对象)
+MercuryTimers("LoginPage_MainPage").start(开始计时)
+---------------------------
+MercuryTimers("LoginPage_MainPage").stop（结束计时）
+print MercuryTimers("LoginPage_MainPage").elapsedtime（获取总共耗时）
