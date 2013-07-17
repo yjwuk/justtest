@@ -1,0 +1,132 @@
+新增“补填订单”功能，可以在门店以外位置进行，不涉及定位
+新增“特殊订单”模块中整合了经销商订单和补填订单。
+TSR选择进行补填订单操作的门店，不能是当天计划内或计划外拜访的门店
+
+
+Bitium:
+
+默认情况使用mechanize
+driver: :poltergeist
+使用Browser
+plugin_method: :script  添加App时使用Browser方式
+plugin_validation： ：true   user登录时使用Browser方式
+此方式可分开也可组合 视情况而定
+
+1. Use spider (mechanize) to do installation and login
+ 
+---
+name: Socialcast
+base_url: https://login.socialcast.com
+login_type: login
+authentication_types:
+- browser
+requires_plugin: true
+shared_login: true
+spider:
+  actions:
+    users:
+      authenticate:
+        steps:
+        - action: visit
+          target: /sso/new
+        - action: fill_in
+          target: email
+          value: $login
+        - action: fill_in
+          target: password
+          value: $password
+        - action: submit
+ 
+ 
+2. Use spider (poltergeist) to do installation and login
+---
+name: Socialcast
+base_url: https://login.socialcast.com <https://login..socialcast.com> 
+login_type: login
+authentication_types:
+- browser
+requires_plugin: true
+shared_login: true
+spider:
+  driver: poltergeist
+  actions:
+    users:
+      authenticate:
+        steps:
+        - action: visit
+          target: /sso/new
+        - action: fill_in
+          target: email
+          value: $login
+        - action: fill_in
+          target: password
+          value: $password
+        - action: submit
+ 
+3.. Use spider to do installation, but browser to do login
+---
+name: 24/7 Real Media
+base_url: https://openadstream17.247realmedia.com
+login_type: username
+authentication_types:
+- browser
+requires_plugin: true
+plugin_method: script
+installation:
+ 
+  fields:
+  - name: account
+spider:
+  actions:
+    users:
+      authenticate:
+        steps:
+        - action: visit
+          target: /oas/
+        - action: fill_in
+          target: user_id_input
+          value: $login
+        - action: fill_in
+          target: password_input
+          value: $password
+        - action: fill_in
+          target: accountId
+          value: $account
+        - action: submit
+ 
+ 
+ 
+4. Use browser to do installation and login
+---
+name: 24/7 Real Media
+base_url: https://openadstream17.247realmedia.com
+login_type: username
+authentication_types:
+- browser
+requires_plugin: true
+plugin_method: script
+plugin_validation: true
+installation:
+  fields:
+  - name: account
+spider:
+  actions:
+    users:
+      authenticate:
+        steps:
+        - action: visit
+          target: /oas/
+        - action: fill_in
+          target: user_id_input
+          value: $login
+        - action: fill_in
+          target: password_input
+          value: $password
+        - action: fill_in
+          target: accountId
+          value: $account
+        - action: submit
+ 
+ 
+ 
+ 
