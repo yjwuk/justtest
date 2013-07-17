@@ -1,0 +1,123 @@
+System url: 
+
+test.salesforce.com
+
+ 
+
+Username and password:
+
+issqa@mjn.com.sandbox2
+
+mjn12345
+
+ 
+
+login
+mjnsfa3@126.com
+mjn12345 
+to get activation code.
+
+
+
+
+dssu@mjntrial.com.fullbox
+mjn12345
+
+
+xingfang.huang@mjn.com.fullbox
+mjn12345
+EfeNLssiJcvbx5NKxmJ8A3gGy
+
+
+缺陷管理：
+http://10.48.65.202:8080/secure/Dashboard.jspa
+hyliao
+12345678
+
+Bitium产品地址：
+https://www.bitium.com/site/user-features/
+
+
+登录、登陆后主页面、门店功能、通知、问卷
+zouwmj@126.com.sandbox2
+ZWSByTOVMEHH0xVXX9HQLb2C8
+
+liping.chen1@mjn.com.sandbox2
+mjn12345
+3QXypPuyH2OX39SnGHWy84mw
+
+
+Bitium所使用的网页与账号：
+https://int.bitium.com
+keewooi@keewooi.com
+Password1
+1、选择“kepler Tester”
+2、work on the following apps
+   a、Authoritylabs(http://ala.bls)
+      keewooi@5desks.com   P:pass778899
+   b、Basecamp(http://basecamp.com)
+      keewooi@5desks.com  P:pass778899
+   c、Netsuite（http://netsuite.com）
+      xxx@xxx.com   P : 1234
+
+
+
+b:
+name: basecamp
+base_url: http://basecamp.com/
+login_type: login
+authentication_types:
+- browser
+requires_plugin: true
+shared_login: true
+spider:
+  actions:
+    users:
+      authenticate:
+        steps:
+        - action: visit
+          target: https://launchpad.37signals.com/signin
+        - action: fill_in
+          target: username
+          value: $login
+        - action: fill_in
+          target: password
+          value: $password
+        - action: submit
+
+
+c:
+name: Netsuite
+base_url: http://www.netsuite.com/
+login_type: email
+authentication_types:
+- browser
+requires_plugin: true
+shared_login: true
+spider:
+  driver: poltergeist
+  actions:
+    users:
+      authenticate:
+        steps:
+        - action: visit
+          target: https://system.netsuite.com
+        - action: fill_in
+          target: email
+          value: $login
+        - action: fill_in
+          target: password
+          value: $password
+        - action: submit
+        success:
+          type: not_match_text
+          value: 'You have entered an invalid 
+
+
+
+
+
+
+
+
+ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIBTji+Q3iXb256MHs/Aur+YrMfWCEeeKUz2h5GEyWvgrFbT8R+cr94zhB1wT0Unl8ofko0tmp7hl1vQGwmPavb4TLk0kQDBzrelViL0fKhHQqHs7mpYdzHAXzaqhPDASv6SjDlLQHIxHXsx1ojcG3gRPBQj6v1p9lrGuXDId3QnTQ== rsa-key-20130717
